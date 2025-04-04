@@ -404,7 +404,7 @@
             .container {
                 box-shadow: none;
                 margin: 0;
-                padding: 1.5cm;
+                padding: 20px;
                 max-width: none;
             }
             
@@ -418,7 +418,7 @@
             
             .no-print, 
             .document-actions, 
-            .status-indicator,
+            .table-of-contents,
             .skip-nav {
                 display: none !important;
             }
@@ -426,10 +426,6 @@
             a {
                 text-decoration: none;
                 color: inherit;
-            }
-            
-            .table-of-contents {
-                display: none;
             }
             
             @page {
@@ -504,6 +500,7 @@
             }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <!-- Accessibility skip navigation -->
@@ -533,6 +530,16 @@
             <button class="action-btn" onclick="generatePDF()">
                 <i class="fas fa-file-pdf"></i> Save as PDF
             </button>
+
+            <button class="action-btn" onclick="generatePDF()">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+    
+            <!-- 여기에 고급 PDF 버튼을 추가합니다 -->
+            <button class="action-btn secondary" onclick="generateAdvancedPDF()">
+                <i class="fas fa-file-pdf"></i> Advanced PDF
+            </button>
+            
             <button class="action-btn secondary" id="toggle-changes-btn">
                 <i class="fas fa-history"></i> Show Changes
             </button>
@@ -933,10 +940,119 @@
         
         // PDF generation placeholder function
         function generatePDF() {
-            alert('PDF generation feature would be implemented here with a library like jsPDF or using server-side processing.');
-            // In a real implementation, we would use a library like jsPDF
-            // or send the HTML to a server for PDF conversion
+            // 인쇄에 필요없는 요소들을 일시적으로 숨깁니다
+            const actionsElement = document.querySelector('.document-actions');
+            const tocElement = document.querySelector('.table-of-contents');
+            const skipElement = document.querySelector('.skip-nav');
+            
+            // 요소들의 현재 표시 상태를 저장합니다
+            const actionsDisplay = actionsElement ? actionsElement.style.display : null;
+            const tocDisplay = tocElement ? tocElement.style.display : null;
+            const skipDisplay = skipElement ? skipElement.style.display : null;
+            
+            // 요소들을 숨깁니다
+            if (actionsElement) actionsElement.style.display = 'none';
+            if (tocElement) tocElement.style.display = 'none';
+            if (skipElement) skipElement.style.display = 'none';
+            
+            // PDF 옵션을 설정합니다
+            const element = document.querySelector('.container');
+            const opt = {
+                margin: [10, 10, 10, 10], // 상, 우, 하, 좌 여백 (mm)
+                filename: 'Raffles_Contract_' + new Date().toISOString().slice(0, 10) + '.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2, // 해상도 향상
+                    useCORS: true, // 외부 이미지 지원
+                    logging: false, // 로그 비활성화
+                    letterRendering: true, // 텍스트 렌더링 품질 향상
+                    allowTaint: true, // 이미지 처리 허용
+                    scrollY: 0 // 스크롤 위치 고정
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait'
+                }
+            };
+            
+            // PDF 생성 프로세스를 시작합니다
+            html2pdf().set(opt).from(element).save().then(() => {
+                // PDF 생성 후 숨긴 요소들을 다시 표시합니다
+                if (actionsElement) actionsElement.style.display = actionsDisplay || '';
+                if (tocElement) tocElement.style.display = tocDisplay || '';
+                if (skipElement) skipElement.style.display = skipDisplay || '';
+                
+                console.log('PDF successfully generated!');
+            });
         }
+
+        <script>
+    // 기존 generatePDF 함수...
+    
+    // 여기에 고급 PDF 생성 함수를 추가합니다
+    function generateAdvancedPDF() {
+        // 인쇄에 필요없는 요소들을 일시적으로 숨깁니다
+        const actionsElement = document.querySelector('.document-actions');
+        const tocElement = document.querySelector('.table-of-contents');
+        const skipElement = document.querySelector('.skip-nav');
+        
+        if (actionsElement) actionsElement.style.display = 'none';
+        if (tocElement) tocElement.style.display = 'none';
+        if (skipElement) skipElement.style.display = 'none';
+        
+        // 문서 제목과 날짜를 가져옵니다
+        const title = document.querySelector('.contract-title').textContent;
+        const date = new Date().toLocaleDateString('ko-KR', {
+            year: 'numeric', month: 'long', day: 'numeric'
+        });
+        
+        // PDF 생성 옵션을 설정합니다
+        const element = document.querySelector('.container');
+        const opt = {
+            margin: [15, 15, 20, 15], // 상, 우, 하, 좌 여백 (mm)
+            filename: 'Raffles_Contract_' + new Date().toISOString().slice(0, 10) + '.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                scale: 3, // 더 높은 해상도
+                useCORS: true,
+                logging: false,
+                letterRendering: true,
+                allowTaint: true,
+                scrollY: 0
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait',
+                compress: true, // 파일 크기 감소
+            },
+            // 푸터 추가
+            pagebreak: { mode: 'avoid-all', before: '.signature-block' },
+            footer: {
+                height: '10mm',
+                contents: {
+                    default: `<div style="text-align: center; font-size: 8pt; color: #666;">
+                        <span>${title} - 페이지 {{page}}/{{pages}}</span><br>
+                        <span>생성일: ${date} | Raffles Language Course</span>
+                    </div>`
+                }
+            }
+        };
+        
+        // PDF 생성 프로세스를 시작합니다
+        html2pdf().set(opt).from(element).save().then(() => {
+            // PDF 생성 후 숨긴 요소들을 다시 표시합니다
+            if (actionsElement) actionsElement.style.display = '';
+            if (tocElement) tocElement.style.display = '';
+            if (skipElement) skipElement.style.display = '';
+            
+            console.log('Advanced PDF successfully generated!');
+        });
+    }
+    
+    // 다른 기존 함수들...
+</script>
         
         // Digital signature functionality would be implemented here
         // using libraries like signature_pad.js
