@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Employment Contract between Raffles Language Course and Zamawelase Nsutsha">
     <title>Raffles Language Course Employment Contract</title>
-    <!-- Web Font Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         /* CSS Variables for Theming */
         :root {
@@ -37,7 +36,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
             line-height: 1.6;
@@ -46,7 +45,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         .container {
             max-width: 210mm;  /* A4 width */
             margin: 2rem auto;
@@ -56,7 +55,7 @@
             border-radius: var(--border-radius);
             position: relative;
         }
-        
+
         /* Skip navigation for accessibility */
         .skip-nav {
             position: absolute;
@@ -68,11 +67,11 @@
             z-index: 100;
             transition: top 0.3s;
         }
-        
+
         .skip-nav:focus {
             top: 0;
         }
-        
+
         /* Header Styles */
         .contract-header {
             text-align: center;
@@ -81,14 +80,17 @@
             border-bottom: 2px solid var(--primary-color);
             position: relative;
         }
-        
+
         .logo {
             max-width: 180px;
             height: auto;
             margin: 0 auto 1rem;
             display: block;
+            /* Placeholder styling */
+            font-size: 3rem;
+            color: var(--primary-color);
         }
-        
+
         .contract-title {
             font-size: 1.75rem;
             font-weight: bold;
@@ -97,13 +99,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .contract-subtitle {
             font-size: 1.25rem;
             margin: 0.5rem 0;
             color: var(--secondary-color);
         }
-        
+
         .contract-status {
             position: absolute;
             top: 0;
@@ -111,7 +113,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         .status-indicator {
             padding: 0.25rem 0.75rem;
             font-size: 0.875rem;
@@ -119,21 +121,21 @@
             border-radius: 50px;
             color: white;
         }
-        
+
         .status-indicator.draft {
             background-color: #f39c12;
         }
-        
+
         .status-indicator.final {
             background-color: #27ae60;
         }
-        
+
         .document-id {
             font-size: 0.875rem;
             color: var(--text-light);
             margin-top: 0.75rem;
         }
-        
+
         /* Table of Contents */
         .table-of-contents {
             background-color: #f8f9fa;
@@ -142,23 +144,23 @@
             margin-bottom: var(--section-spacing);
             border-radius: var(--border-radius);
         }
-        
+
         .table-of-contents h3 {
             color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.25rem;
         }
-        
+
         .table-of-contents ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
         }
-        
+
         .table-of-contents li {
             margin-bottom: 0.5rem;
         }
-        
+
         .table-of-contents a {
             color: var(--secondary-color);
             text-decoration: none;
@@ -166,22 +168,24 @@
             display: block;
             padding: 0.25rem 0;
         }
-        
+
         .table-of-contents a:hover {
             color: var(--primary-color);
             text-decoration: underline;
         }
-        
+
         /* Document Actions */
         .document-actions {
             display: flex;
             gap: 1rem;
             margin-bottom: var(--section-spacing);
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
         }
-        
+
         .action-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center; /* Center icon and text */
             padding: 0.5rem 1rem;
             background-color: var(--secondary-color);
             color: white;
@@ -190,34 +194,36 @@
             cursor: pointer;
             font-size: 0.875rem;
             transition: background-color var(--transition-speed);
+            flex: 1; /* Allow buttons to grow */
+            min-width: 120px; /* Minimum width for buttons */
         }
-        
+
         .action-btn:hover {
             background-color: var(--primary-color);
         }
-        
+
         .action-btn i {
             margin-right: 0.5rem;
         }
-        
+
         .action-btn.secondary {
             background-color: #f8f9fa;
             color: var(--text-color);
             border: 1px solid var(--border-color);
         }
-        
+
         .action-btn.secondary:hover {
             background-color: #e9ecef;
         }
-        
+
         /* Section Styles */
         .section {
             margin-bottom: var(--section-spacing);
             page-break-inside: avoid;
             border-radius: var(--border-radius);
-            overflow: hidden;
+            overflow: hidden; /* Ensures border-radius applies correctly */
         }
-        
+
         .section-title {
             font-size: 1.25rem;
             font-weight: bold;
@@ -229,12 +235,12 @@
             display: flex;
             align-items: center;
         }
-        
+
         .section-title i {
             margin-right: 0.75rem;
             color: var(--secondary-color);
         }
-        
+
         /* Bilingual Content */
         .bilingual {
             display: flex;
@@ -243,21 +249,19 @@
             overflow: hidden;
             border: 1px solid var(--light-border);
         }
-        
-        .english {
+
+        .english, .korean {
             flex: 1;
             padding: 1rem;
             position: relative;
+            transition: flex 0.3s ease, display 0.3s ease; /* Added transition */
         }
-        
+
         .korean {
-            flex: 1;
-            padding: 1rem;
             background-color: #f8f9fa;
             border-left: 1px solid var(--light-border);
-            position: relative;
         }
-        
+
         .lang-indicator {
             position: absolute;
             top: 0.25rem;
@@ -268,17 +272,17 @@
             padding: 0.125rem 0.375rem;
             border-radius: 3px;
         }
-        
+
         /* List Styles */
         ul, ol {
-            margin-top: 0;
+            margin-top: 0; /* Reset default margin */
             padding-left: 1.5rem;
         }
-        
+
         li {
             margin-bottom: 0.5rem;
         }
-        
+
         /* Highlight Clauses */
         .highlight-clause {
             background-color: #fff8e1;
@@ -287,7 +291,7 @@
             margin: 1rem 0;
             border-radius: var(--border-radius);
         }
-        
+
         /* Signature Section */
         .signatures {
             display: flex;
@@ -295,15 +299,16 @@
             margin-top: 2.5rem;
             gap: 1.5rem;
         }
-        
+
         .signature-block {
             flex: 1;
             border: 1px solid var(--border-color);
             padding: 1rem;
             border-radius: var(--border-radius);
             background-color: #fafafa;
+            page-break-inside: avoid; /* Prevent breaking inside signature block during print/PDF */
         }
-        
+
         .signature-title {
             font-weight: bold;
             margin-bottom: 1rem;
@@ -311,29 +316,30 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--light-border);
         }
-        
+
         .signature-content {
             margin-bottom: 1.5rem;
         }
-        
+
         .signature-field {
             margin-top: 1.5rem;
         }
-        
+
         .signature-field label {
             display: block;
             font-weight: 500;
             margin-bottom: 0.5rem;
             color: var(--text-color);
         }
-        
+
         .signature-line {
             border-bottom: 1px solid var(--text-color);
             height: 2.5rem;
             margin-top: 0.25rem;
             position: relative;
+            /* Add background or placeholder for visual signing area if needed */
         }
-        
+
         .signature-input {
             width: 100%;
             padding: 0.5rem;
@@ -341,21 +347,21 @@
             border-radius: var(--border-radius);
             margin-bottom: 0.5rem;
         }
-        
+
         .date-field {
             display: flex;
             gap: 0.5rem;
             margin-top: 1.5rem;
         }
-        
+
         .date-input {
-            width: 3rem;
+            width: 4rem; /* Slightly wider for YYYY */
             padding: 0.5rem;
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
             text-align: center;
         }
-        
+
         /* Document Authentication */
         .document-authentication {
             margin-top: 3rem;
@@ -363,7 +369,7 @@
             padding-top: 1.5rem;
             border-top: 1px solid var(--light-border);
         }
-        
+
         .document-verification {
             display: flex;
             align-items: center;
@@ -371,7 +377,7 @@
             margin-top: 1rem;
             gap: 1rem;
         }
-        
+
         .qr-placeholder {
             width: 80px;
             height: 80px;
@@ -383,7 +389,7 @@
             font-size: 2rem;
             color: var(--text-light);
         }
-        
+
         /* Footer */
         .footer {
             text-align: center;
@@ -393,47 +399,105 @@
             border-top: 1px solid var(--light-border);
             padding-top: 1rem;
         }
-        
+
         /* Print Styles */
         @media print {
             body {
                 background-color: white;
                 font-size: 11pt;
+                color: #000; /* Ensure black text for print */
             }
-            
+
             .container {
                 box-shadow: none;
                 margin: 0;
-                padding: 20px;
-                max-width: none;
+                padding: 0; /* Remove padding for print */
+                max-width: 100%;
+                border: none;
             }
-            
+
             .section {
                 page-break-inside: avoid;
+                border: none; /* Remove borders for print */
+                background-color: transparent !important; /* Ensure no background colors */
             }
-            
+            .section-title {
+                 background-color: transparent !important;
+                 border: none;
+                 color: #000;
+                 padding-left: 0; /* Remove padding */
+            }
+            .section-title i {
+                display: none; /* Hide icons in print */
+            }
+
+            .bilingual {
+                border: none;
+                margin-bottom: 0.5rem; /* Reduce margin */
+            }
+            .english, .korean {
+                padding: 0.5rem 0; /* Reduce padding */
+                border: none;
+                background-color: transparent !important;
+            }
+            .lang-indicator {
+                display: none; /* Hide language indicators */
+            }
+
+            .highlight-clause {
+                 background-color: transparent !important;
+                 border-left: 2px solid #ccc; /* Use a lighter border */
+                 padding: 0.5rem;
+            }
+
             .signature-block {
                 page-break-inside: avoid;
+                border: 1px solid #ccc; /* Lighter border for print */
+                background-color: transparent !important;
             }
-            
-            .no-print, 
-            .document-actions, 
+            .signature-title {
+                color: #000;
+                border-bottom: 1px solid #ccc;
+            }
+            .signature-line {
+                border-bottom: 1px solid #000;
+            }
+            .signature-input, .date-input {
+                 border: 1px solid #ccc;
+                 background-color: #fff; /* Ensure white background */
+            }
+
+
+            .no-print,
+            .document-actions,
             .table-of-contents,
-            .skip-nav {
+            .skip-nav,
+            .contract-status, /* Hide status indicator */
+            .document-authentication /* Hide QR code section */
+            {
                 display: none !important;
             }
-            
+
             a {
                 text-decoration: none;
                 color: inherit;
             }
-            
+
+            /* Ensure links are not colored blue */
+             a[href^="http"], a[href^="mailto"] {
+                color: inherit;
+                text-decoration: none;
+             }
+             /* Optionally, show full URL for links in print */
+             /* a[href]:after { content: " (" attr(href) ")"; font-size: 90%; } */
+
+
             @page {
                 size: A4;
-                margin: 2cm 1.5cm;
+                margin: 2cm 1.5cm; /* Standard A4 margins */
             }
         }
-        
+
         /* Change tracking system */
         .changed-text {
             background-color: #e8f4f8;
@@ -441,24 +505,24 @@
             text-decoration-style: wavy;
             text-decoration-color: var(--accent-color);
         }
-        
+
         .removed-text {
-            display: none;
+            display: none; /* Hide removed text by default */
         }
-        
+
         .show-changes .removed-text {
-            display: inline;
+            display: inline; /* Show removed text when 'show-changes' class is active */
             text-decoration: line-through;
             color: var(--warning-color);
             background-color: #fadbd8;
         }
-        
+
         /* Accessibility enhancements */
         *:focus {
             outline: 2px solid var(--accent-color);
             outline-offset: 2px;
         }
-        
+
         /* Responsive adjustments */
         @media screen and (max-width: 768px) {
             .container {
@@ -466,89 +530,97 @@
                 padding: 1rem;
                 border-radius: 0;
                 max-width: 100%;
+                box-shadow: none; /* Remove shadow on small screens */
             }
-            
+
             .bilingual {
-                flex-direction: column;
+                flex-direction: column; /* Stack languages vertically */
+                 border: none; /* Remove border */
             }
-            
+
             .english, .korean {
-                padding: 1rem;
-                border: none;
+                padding: 1rem 0.5rem; /* Adjust padding */
+                border: none; /* Remove individual borders */
+                flex-basis: auto; /* Reset flex basis */
             }
-            
+
             .korean {
-                border-top: 1px solid var(--light-border);
+                 border-top: 1px solid var(--light-border); /* Add separator */
+                 background-color: #f8f9fa; /* Keep background for distinction */
             }
-            
+
             .signatures {
-                flex-direction: column;
+                flex-direction: column; /* Stack signature blocks */
+                gap: 1rem; /* Reduce gap */
             }
-            
+
             .signature-block {
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem; /* Adjust margin */
             }
-            
+
             .document-actions {
-                flex-wrap: wrap;
+                gap: 0.5rem; /* Reduce gap between buttons */
             }
-            
+
             .action-btn {
-                flex: 1;
-                min-width: 120px;
-                justify-content: center;
+                font-size: 0.8rem; /* Slightly smaller font */
+                padding: 0.4rem 0.8rem; /* Adjust padding */
+            }
+
+            .contract-title {
+                font-size: 1.5rem;
+            }
+            .contract-subtitle {
+                font-size: 1.1rem;
             }
         }
+         @media screen and (max-width: 480px) {
+             .action-btn {
+                 min-width: 100px; /* Further adjust min-width */
+             }
+             .date-field {
+                 flex-wrap: wrap; /* Allow date inputs to wrap */
+             }
+             .date-input {
+                 width: 3.5rem; /* Adjust width */
+             }
+         }
+
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-    <!-- Accessibility skip navigation -->
-    <a href="#main-content" class="skip-nav">Skip to main content</a>
-    
+    <a href="#main-content" class="skip-nav">본문 내용으로 건너뛰기</a>
+
     <div class="container">
-        <div class="contract-header">
-            <!-- Logo placeholder -->
+        <header class="contract-header">
             <div class="logo">
-                <i class="fas fa-building" style="font-size: 3rem; color: var(--primary-color);"></i>
-            </div>
+                <i class="fas fa-building"></i> </div>
             <h1 class="contract-title">CONTRACT OF EMPLOYMENT</h1>
             <h2 class="contract-subtitle">고용 계약서</h2>
             <div class="document-id">Document ID: RLC-EMP-2025-NS</div>
-            
-            <!-- Contract status indicator -->
-            <div class="contract-status">
+
+            <div class="contract-status no-print">
                 <div class="status-indicator final">최종본 / Final</div>
             </div>
-        </div>
-        
-        <!-- Document actions -->
+        </header>
+
         <div class="document-actions no-print">
             <button class="action-btn" onclick="window.print()">
-                <i class="fas fa-print"></i> Print
+                <i class="fas fa-print"></i> 인쇄
             </button>
             <button class="action-btn" onclick="generatePDF()">
-                <i class="fas fa-file-pdf"></i> Save as PDF
+                <i class="fas fa-file-pdf"></i> PDF로 저장
             </button>
-
-            <button class="action-btn" onclick="generatePDF()">
-                <i class="fas fa-file-pdf"></i> Save as PDF
-            </button>
-    
-            <!-- 여기에 고급 PDF 버튼을 추가합니다 -->
             <button class="action-btn secondary" onclick="generateAdvancedPDF()">
-                <i class="fas fa-file-pdf"></i> Advanced PDF
+                <i class="fas fa-file-pdf"></i> 고급 PDF
             </button>
-            
             <button class="action-btn secondary" id="toggle-changes-btn">
-                <i class="fas fa-history"></i> Show Changes
+                <i class="fas fa-history"></i> 변경사항 보기
             </button>
-            <button class="action-btn secondary" id="toggle-language-btn">
-                <i class="fas fa-language"></i> Toggle Language
+            <button class="action-btn secondary" id="toggle-language-btn" data-lang-state="both"> <i class="fas fa-language"></i> 언어 전환
             </button>
         </div>
-        
-        <!-- Table of Contents -->
+
         <nav class="table-of-contents no-print" aria-labelledby="toc-heading">
             <h3 id="toc-heading">Contents / 목차</h3>
             <ul>
@@ -563,12 +635,10 @@
                 <li><a href="#signatures">Signatures / 서명</a></li>
             </ul>
         </nav>
-        
-        <!-- Main content -->
+
         <main id="main-content">
-            <!-- Contract Introduction -->
             <section class="section" id="introduction" role="region" aria-labelledby="introduction-title">
-                <div class="bilingual">
+                 <h3 class="section-title visually-hidden" id="introduction-title">Introduction / 소개</h3> <div class="bilingual">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
                         <p>This is a contract between <strong>Raffles Language Course</strong> as the employer (referred to as "A" hereinafter) and <strong>Zamawelase Nsutsha</strong> as the employee (referred to as "B" hereinafter).</p>
@@ -579,8 +649,7 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Section A - Position -->
+
             <section class="section" id="section-a" role="region" aria-labelledby="section-a-title">
                 <h3 class="section-title" id="section-a-title">
                     <i class="fas fa-user-tie"></i> A. Position / A. 직위
@@ -596,8 +665,7 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Section B - Contract Period -->
+
             <section class="section" id="section-b" role="region" aria-labelledby="section-b-title">
                 <h3 class="section-title" id="section-b-title">
                     <i class="fas fa-calendar-alt"></i> B. Contract Period / B. 계약 기간
@@ -615,14 +683,12 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Section C - Conditions -->
+
             <section class="section" id="section-c" role="region" aria-labelledby="section-c-title">
                 <h3 class="section-title" id="section-c-title">
                     <i class="fas fa-file-contract"></i> C. Conditions / C. 조건
                 </h3>
-                
-                <!-- Subsection C1 -->
+
                 <div class="bilingual">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
@@ -633,8 +699,7 @@
                         <p><strong>1.</strong> 월 120시간(주 30시간)의 강의 시간에 대해 월 급여 <u>2,400,000원</u>이 지급됩니다. 계약된 시간을 초과하는 추가 강의 시간에 대해서는 평일 기준 시간당 20,000원이 지급됩니다.</p>
                     </div>
                 </div>
-                
-                <!-- Subsection C2 -->
+
                 <div class="bilingual">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
@@ -645,11 +710,7 @@
                         <p><strong>2.</strong> "B"가 12개월 계약 기간을 성공적으로 완료하면 2,400,000원의 계약 완료 보너스를 받게 됩니다. "B"가 어떤 이유로든 전체 계약 기간을 완료하지 못하는 경우, 이 완료 보너스는 지급되지 않습니다.</p>
                     </div>
                 </div>
-                
-                <!-- Additional subsections would follow in the same pattern -->
-                <!-- For brevity, I'm including just these samples -->
-                
-                <!-- Subsection C9 - Vacation & Holidays - Highlighting important clauses -->
+
                 <div class="bilingual highlight-clause">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
@@ -667,13 +728,12 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Section D - Duties -->
+
             <section class="section" id="section-d" role="region" aria-labelledby="section-d-title">
                 <h3 class="section-title" id="section-d-title">
                     <i class="fas fa-tasks"></i> D. Duties as an Instructor / D. 강사로서의 직무
                 </h3>
-                
+
                 <div class="bilingual">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
@@ -684,33 +744,26 @@
                         <p><strong>Raffles Language Course</strong> 강사들은 <strong>Raffles Language Course</strong>의 주요 대표자 역할을 합니다. 모든 강사들은 다음 지침 및 기대사항을 준수해야 합니다. 이러한 지침을 준수하지 않을 경우 계약이 해지될 수 있습니다.</p>
                     </div>
                 </div>
-                
-                <!-- Additional subsections for duties would be included here -->
-            </section>
-            
-            <!-- Section E - Contract Termination -->
+                </section>
+
             <section class="section" id="section-e" role="region" aria-labelledby="section-e-title">
                 <h3 class="section-title" id="section-e-title">
                     <i class="fas fa-handshake-slash"></i> E. Contract Termination / E. 계약 해지
                 </h3>
-                
+
                 <div class="bilingual highlight-clause">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
                         <p><strong>1.</strong> The contract may be terminated under the following circumstances:</p>
                         <p style="padding-left: 1.5rem;">a. If "B" is unable to fulfill the responsibilities outlined in this Employment Agreement, "A" reserves the right to terminate the contract. Similarly, if "A" fails to fulfill its contractual obligations, "B" may terminate the contract.</p>
-                        
-                        <!-- Additional termination clauses would be added here -->
-                    </div>
+                        </div>
                     <div class="korean">
                         <span class="lang-indicator">KR</span>
                         <p><strong>1.</strong> 다음과 같은 상황에서 계약이 해지될 수 있습니다:</p>
                         <p style="padding-left: 1.5rem;">a. "B"가 본 고용 계약서에 명시된 책임을 이행할 수 없는 경우, "A"는 계약을 해지할 권리를 가집니다. 마찬가지로, "A"가 계약상 의무를 이행하지 못하는 경우, "B"는 계약을 해지할 수 있습니다.</p>
-                        
-                        <!-- Additional termination clauses would be added here -->
-                    </div>
+                        </div>
                 </div>
-                
+
                 <div class="bilingual">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
@@ -722,8 +775,7 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Section F - Governing Language -->
+
             <section class="section" id="section-f" role="region" aria-labelledby="section-f-title">
                 <h3 class="section-title" id="section-f-title">
                     <i class="fas fa-language"></i> F. Governing Language / F. 준거 언어
@@ -739,13 +791,11 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Section G - Governing Law and Jurisdiction -->
+
             <section class="section" id="section-g" role="region" aria-labelledby="section-g-title">
                 <h3 class="section-title" id="section-g-title">
                     <i class="fas fa-gavel"></i> G. Governing Law and Jurisdiction / G. 준거법 및 관할권
                 </h3>
-                
                 <div class="bilingual highlight-clause">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
@@ -757,39 +807,9 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Conclusive Statement -->
-            <section class="section">
-                <div class="bilingual">
-                    <div class="english">
-                        <span class="lang-indicator">EN</span>
-                        <p>Both parties have read and agree to the above conditions and terms in good faith and will make reasonable efforts to resolve any disputes cooperatively. The undersigned agree to the above contract.</p>
-                    </div>
-                    <div class="korean">
-                        <span class="lang-indicator">KR</span>
-                        <p>양 당사자는 선의로 위의 조건 및 조항을 읽고 동의하며, 모든 분쟁을 협력적으로 해결하기 위해 합리적인 노력을 기울일 것입니다. 아래 서명자는 위의 계약에 동의합니다.</p>
-                    </div>
-                </div>
-            </section> id="section-g" role="region" aria-labelledby="section-g-title">
-                <h3 class="section-title" id="section-g-title">
-                    <i class="fas fa-gavel"></i> G. Governing Law and Jurisdiction / G. 준거법 및 관할권
-                </h3>
-                
-                <div class="bilingual highlight-clause">
-                    <div class="english">
-                        <span class="lang-indicator">EN</span>
-                        <p>This contract shall be governed by and construed in accordance with the laws of the Republic of Korea. Both parties agree that any dispute, controversy, or claim arising out of or in connection with this contract, or the breach, termination, or invalidity thereof, shall be subject to the exclusive jurisdiction of the Gwangju District Court of Korea. Prior to filing any legal action, the parties shall make good faith efforts to resolve disputes through direct negotiation or mediation.</p>
-                    </div>
-                    <div class="korean">
-                        <span class="lang-indicator">KR</span>
-                        <p>본 계약은 대한민국 법률에 따라 규율되고 해석됩니다. 양 당사자는 본 계약으로부터 또는 이와 관련하여 발생하는 모든 분쟁, 논쟁 또는 청구, 또는 계약의 위반, 종료 또는 무효에 관한 사항은 대한민국 광주지방법원의 전속관할에 따르기로 합니다. 법적 조치를 제기하기 전에, 당사자들은 직접 협상 또는 중재를 통해 분쟁을 해결하기 위한 선의의 노력을 기울여야 합니다.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Conclusive Statement -->
-            <section class="section">
-                <div class="bilingual">
+
+            <section class="section" id="conclusive-statement" role="region" aria-labelledby="conclusive-statement-title">
+                 <h3 class="section-title visually-hidden" id="conclusive-statement-title">Conclusive Statement / 최종 진술</h3> <div class="bilingual">
                     <div class="english">
                         <span class="lang-indicator">EN</span>
                         <p>Both parties have read and agree to the above conditions and terms in good faith and will make reasonable efforts to resolve any disputes cooperatively. The undersigned agree to the above contract.</p>
@@ -800,64 +820,63 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Signatures -->
+
             <section class="section" id="signatures">
                 <h3 class="section-title">
-                    <i class="fas fa-signature"></i> Signatures
+                    <i class="fas fa-signature"></i> Signatures / 서명
                 </h3>
-                
+
                 <div class="signatures">
                     <div class="signature-block">
-                        <div class="signature-title">"A" [Employer]</div>
+                        <div class="signature-title">"A" [Employer / 고용주]</div>
                         <div class="signature-content">
                             <p><strong>Raffles Language Course</strong></p>
-                            
+
                             <div class="signature-field">
-                                <label>Address</label>
-                                <p>15, Uijae-ro<br>
+                                <label for="employer-address">Address / 주소</label>
+                                <p id="employer-address">15, Uijae-ro<br>
                                 Dong-gu Gwangju, Jeollanamdo,<br>
                                 South Korea (61459)</p>
                             </div>
-                            
+
                             <div class="signature-field">
-                                <label>Representative Name</label>
-                                <p>Soon Hwa, Kim</p>
+                                <label for="employer-rep">Representative Name / 대표자명</label>
+                                <p id="employer-rep">Soon Hwa, Kim</p>
                             </div>
-                            
+
                             <div class="signature-field">
-                                <label>Signature</label>
-                                <div class="signature-line"></div>
+                                <label for="employer-sig">Signature / 서명</label>
+                                <div class="signature-line" id="employer-sig"></div>
                             </div>
-                            
+
                             <div class="signature-field">
-                                <label>Date</label>
-                                <p>April 3, 2025</p>
+                                <label for="employer-date">Date / 날짜</label>
+                                <p id="employer-date">April 3, 2025</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="signature-block">
-                        <div class="signature-title">"B" [Employee]</div>
+                        <div class="signature-title">"B" [Employee / 직원]</div>
                         <div class="signature-content">
                             <p><strong>Zamawelase Nsutsha</strong></p>
-                            
+
                             <div class="signature-field">
-                                <label>Address</label>
-                                <input type="text" class="signature-input" placeholder="Enter your address">
+                                <label for="employee-address">Address / 주소</label>
+                                <input type="text" id="employee-address" class="signature-input" placeholder="주소를 입력하세요">
                             </div>
-                            
+
                             <div class="signature-field">
-                                <label>Signature</label>
-                                <div class="signature-line"></div>
-                            </div>
-                            
+                                <label for="employee-sig">Signature / 서명</label>
+                                <div class="signature-line" id="employee-sig"></div>
+                                </div>
+
                             <div class="signature-field">
-                                <label>Date</label>
+                                <label>Date / 날짜</label>
                                 <div class="date-field">
-                                    <input type="text" class="date-input" placeholder="YY">
-                                    <input type="text" class="date-input" placeholder="MM">
-                                    <input type="text" class="date-input" placeholder="DD">
+                                    <input type="text" class="date-input" placeholder="YYYY" aria-label="Year">
+                                    <input type="text" class="date-input" placeholder="MM" aria-label="Month">
+                                    <input type="text" class="date-input" placeholder="DD" aria-label="Day">
                                 </div>
                             </div>
                         </div>
@@ -865,217 +884,200 @@
                 </div>
             </section>
         </main>
-        
-        <!-- Document Authentication -->
-        <div class="document-authentication">
+
+        <div class="document-authentication no-print">
             <div class="document-id">Contract ID: RLC-EMP-2025-NS</div>
             <div class="document-verification">
                 <div class="qr-placeholder">
-                    <i class="fas fa-qrcode"></i>
-                </div>
+                    <i class="fas fa-qrcode"></i> </div>
                 <p>Scan QR code to verify the authenticity of this document<br>
                 이 문서의 진위 여부를 확인하려면 QR 코드를 스캔하십시오</p>
             </div>
         </div>
-        
-        <!-- Footer -->
+
         <footer class="footer">
             <p>Raffles Language Course | 15, Uijae-ro, Dong-gu Gwangju, Jeollanamdo, South Korea (61459)</p>
-            <p>Tel: +82-XX-XXXX-XXXX | Email: contact@raffleslanguage.kr</p>
-            <p>This document was last updated on: April 3, 2025</p>
+            <p>Tel: +82-XX-XXXX-XXXX | Email: contact@raffleslanguage.kr</p> <p>This document was last updated on: April 3, 2025</p>
         </footer>
     </div>
 
-    <!-- JavaScript functionality -->
     <script>
-        // Toggle language display
-        document.getElementById('toggle-language-btn').addEventListener('click', function() {
+        // Wait for the DOM to be fully loaded before running scripts
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const toggleLangBtn = document.getElementById('toggle-language-btn');
+            const toggleChangesBtn = document.getElementById('toggle-changes-btn');
             const koreanElements = document.querySelectorAll('.korean');
             const englishElements = document.querySelectorAll('.english');
-            const btn = this;
-            
-            // Check current state
-            const showingBoth = koreanElements[0].style.display !== 'none' && 
-                               englishElements[0].style.display !== 'none';
-            const showingKorean = koreanElements[0].style.display !== 'none' && 
-                                 englishElements[0].style.display === 'none';
-            
-            if (showingBoth) {
-                // Show only English
-                koreanElements.forEach(el => el.style.display = 'none');
-                englishElements.forEach(el => {
-                    el.style.flex = '1';
-                    el.style.borderRight = 'none';
+            const body = document.body;
+
+            // --- Language Toggle Functionality ---
+            if (toggleLangBtn) {
+                toggleLangBtn.addEventListener('click', function() {
+                    const currentState = this.getAttribute('data-lang-state');
+                    let nextState;
+
+                    if (currentState === 'both') {
+                        // Switch to English only
+                        koreanElements.forEach(el => el.style.display = 'none');
+                        englishElements.forEach(el => {
+                            el.style.display = 'block'; // Ensure it's block
+                            el.style.flex = '1 1 100%'; // Take full width
+                            el.style.borderRight = 'none';
+                        });
+                        this.innerHTML = '<i class="fas fa-language"></i> 한국어 표시';
+                        nextState = 'en';
+                    } else if (currentState === 'en') {
+                        // Switch to Korean only
+                        englishElements.forEach(el => el.style.display = 'none');
+                        koreanElements.forEach(el => {
+                            el.style.display = 'block'; // Ensure it's block
+                            el.style.flex = '1 1 100%'; // Take full width
+                            el.style.borderLeft = 'none'; // Remove left border
+                        });
+                        this.innerHTML = '<i class="fas fa-language"></i> 모두 표시';
+                        nextState = 'ko';
+                    } else { // currentState === 'ko'
+                        // Switch back to Both
+                        englishElements.forEach(el => {
+                             el.style.display = 'block';
+                             el.style.flex = '1'; // Reset flex
+                        });
+                        koreanElements.forEach(el => {
+                            el.style.display = 'block';
+                            el.style.flex = '1'; // Reset flex
+                            el.style.borderLeft = '1px solid var(--light-border)'; // Re-add border
+                        });
+                        this.innerHTML = '<i class="fas fa-language"></i> 영어만 표시';
+                        nextState = 'both';
+                    }
+                    this.setAttribute('data-lang-state', nextState);
                 });
-                btn.innerHTML = '<i class="fas fa-language"></i> Show Korean';
-            } else if (showingKorean) {
-                // Show only English
-                koreanElements.forEach(el => el.style.display = 'none');
-                englishElements.forEach(el => {
-                    el.style.display = 'block';
-                    el.style.flex = '1';
-                });
-                btn.innerHTML = '<i class="fas fa-language"></i> Show Both';
-            } else {
-                // Show both
-                koreanElements.forEach(el => el.style.display = 'block');
-                englishElements.forEach(el => {
-                    el.style.display = 'block';
-                    el.style.flex = '1';
-                });
-                btn.innerHTML = '<i class="fas fa-language"></i> Toggle Language';
             }
-        });
-        
-        // Toggle changes display
-        document.getElementById('toggle-changes-btn').addEventListener('click', function() {
-            document.body.classList.toggle('show-changes');
-            const btn = this;
-            if (document.body.classList.contains('show-changes')) {
-                btn.innerHTML = '<i class="fas fa-history"></i> Hide Changes';
-            } else {
-                btn.innerHTML = '<i class="fas fa-history"></i> Show Changes';
-            }
-        });
-        
-        // PDF generation placeholder function
+
+            // --- Toggle Changes Display Functionality ---
+             if (toggleChangesBtn) {
+                toggleChangesBtn.addEventListener('click', function() {
+                    body.classList.toggle('show-changes');
+                    if (body.classList.contains('show-changes')) {
+                        this.innerHTML = '<i class="fas fa-history"></i> 변경사항 숨기기';
+                    } else {
+                        this.innerHTML = '<i class="fas fa-history"></i> 변경사항 보기';
+                    }
+                });
+             }
+        }); // End DOMContentLoaded
+
+        // --- Basic PDF Generation Function ---
         function generatePDF() {
-            // 인쇄에 필요없는 요소들을 일시적으로 숨깁니다
-            const actionsElement = document.querySelector('.document-actions');
-            const tocElement = document.querySelector('.table-of-contents');
-            const skipElement = document.querySelector('.skip-nav');
-            
-            // 요소들의 현재 표시 상태를 저장합니다
-            const actionsDisplay = actionsElement ? actionsElement.style.display : null;
-            const tocDisplay = tocElement ? tocElement.style.display : null;
-            const skipDisplay = skipElement ? skipElement.style.display : null;
-            
-            // 요소들을 숨깁니다
-            if (actionsElement) actionsElement.style.display = 'none';
-            if (tocElement) tocElement.style.display = 'none';
-            if (skipElement) skipElement.style.display = 'none';
-            
-            // PDF 옵션을 설정합니다
+            // Hide elements not needed for PDF
+            const elementsToHide = document.querySelectorAll('.document-actions, .table-of-contents, .skip-nav, .no-print');
+            elementsToHide.forEach(el => el.style.visibility = 'hidden'); // Use visibility to maintain layout
+
             const element = document.querySelector('.container');
             const opt = {
-                margin: [10, 10, 10, 10], // 상, 우, 하, 좌 여백 (mm)
+                margin: [10, 10, 10, 10], // top, right, bottom, left margins in mm
                 filename: 'Raffles_Contract_' + new Date().toISOString().slice(0, 10) + '.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2, // 해상도 향상
-                    useCORS: true, // 외부 이미지 지원
-                    logging: false, // 로그 비활성화
-                    letterRendering: true, // 텍스트 렌더링 품질 향상
-                    allowTaint: true, // 이미지 처리 허용
-                    scrollY: 0 // 스크롤 위치 고정
+                html2canvas: {
+                    scale: 2, // Improves resolution
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true,
+                    scrollY: -window.scrollY // Capture from top
                 },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
                     orientation: 'portrait'
-                }
+                },
+                 pagebreak: { mode: ['avoid-all', 'css'] } // Respect CSS page breaks and avoid breaking elements
             };
-            
-            // PDF 생성 프로세스를 시작합니다
+
+            // Generate the PDF
             html2pdf().set(opt).from(element).save().then(() => {
-                // PDF 생성 후 숨긴 요소들을 다시 표시합니다
-                if (actionsElement) actionsElement.style.display = actionsDisplay || '';
-                if (tocElement) tocElement.style.display = tocDisplay || '';
-                if (skipElement) skipElement.style.display = skipDisplay || '';
-                
+                // Show hidden elements again after PDF generation
+                 elementsToHide.forEach(el => el.style.visibility = 'visible');
                 console.log('PDF successfully generated!');
+            }).catch(err => {
+                 elementsToHide.forEach(el => el.style.visibility = 'visible'); // Also show on error
+                 console.error("PDF generation failed:", err);
             });
         }
 
-        <script>
-    // 기존 generatePDF 함수...
-    
-    // 여기에 고급 PDF 생성 함수를 추가합니다
-    function generateAdvancedPDF() {
-        // 인쇄에 필요없는 요소들을 일시적으로 숨깁니다
-        const actionsElement = document.querySelector('.document-actions');
-        const tocElement = document.querySelector('.table-of-contents');
-        const skipElement = document.querySelector('.skip-nav');
-        
-        if (actionsElement) actionsElement.style.display = 'none';
-        if (tocElement) tocElement.style.display = 'none';
-        if (skipElement) skipElement.style.display = 'none';
-        
-        // 문서 제목과 날짜를 가져옵니다
-        const title = document.querySelector('.contract-title').textContent;
-        const date = new Date().toLocaleDateString('ko-KR', {
-            year: 'numeric', month: 'long', day: 'numeric'
-        });
-        
-        // PDF 생성 옵션을 설정합니다
-        const element = document.querySelector('.container');
-        const opt = {
-            margin: [15, 15, 20, 15], // 상, 우, 하, 좌 여백 (mm)
-            filename: 'Raffles_Contract_' + new Date().toISOString().slice(0, 10) + '.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { 
-                scale: 3, // 더 높은 해상도
-                useCORS: true,
-                logging: false,
-                letterRendering: true,
-                allowTaint: true,
-                scrollY: 0
-            },
-            jsPDF: { 
-                unit: 'mm', 
-                format: 'a4', 
-                orientation: 'portrait',
-                compress: true, // 파일 크기 감소
-            },
-            // 푸터 추가
-            pagebreak: { mode: 'avoid-all', before: '.signature-block' },
-            footer: {
-                height: '10mm',
-                contents: {
-                    default: `<div style="text-align: center; font-size: 8pt; color: #666;">
-                        <span>${title} - 페이지 {{page}}/{{pages}}</span><br>
-                        <span>생성일: ${date} | Raffles Language Course</span>
-                    </div>`
-                }
-            }
-        };
-        
-        // PDF 생성 프로세스를 시작합니다
-        html2pdf().set(opt).from(element).save().then(() => {
-            // PDF 생성 후 숨긴 요소들을 다시 표시합니다
-            if (actionsElement) actionsElement.style.display = '';
-            if (tocElement) tocElement.style.display = '';
-            if (skipElement) skipElement.style.display = '';
-            
-            console.log('Advanced PDF successfully generated!');
-        });
-    }
-    
-    // 다른 기존 함수들...
-</script>
-        
-        // Digital signature functionality would be implemented here
-        // using libraries like signature_pad.js
-        
-        // Function to automatically adjust height of input fields
-        function adjustInputHeight() {
-            const textInputs = document.querySelectorAll('textarea.signature-input');
-            textInputs.forEach(input => {
-                input.style.height = 'auto';
-                input.style.height = (input.scrollHeight) + 'px';
-                
-                input.addEventListener('input', function() {
-                    this.style.height = 'auto';
-                    this.style.height = (this.scrollHeight) + 'px';
-                });
+        // --- Advanced PDF Generation Function ---
+        // Moved this function outside the nested script tag and DOMContentLoaded
+        function generateAdvancedPDF() {
+            // Hide elements not needed for PDF
+            const elementsToHide = document.querySelectorAll('.document-actions, .table-of-contents, .skip-nav, .no-print');
+            elementsToHide.forEach(el => el.style.visibility = 'hidden'); // Use visibility
+
+            const titleElement = document.querySelector('.contract-title');
+            const title = titleElement ? titleElement.textContent : 'Employment Contract';
+            const date = new Date().toLocaleDateString('ko-KR', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+
+            const element = document.querySelector('.container');
+            const opt = {
+                margin: [15, 15, 20, 15], // Increased bottom margin for footer
+                filename: 'Raffles_Contract_Advanced_' + new Date().toISOString().slice(0, 10) + '.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2.5, // Slightly higher scale
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true,
+                     scrollY: -window.scrollY // Capture from top
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait',
+                    compress: true, // Enable compression
+                },
+                 pagebreak: { mode: ['avoid-all', 'css'], before: '.signature-block' }, // Avoid breaks before signatures
+                // Add footer using html2pdf's built-in capabilities
+                 set: {
+                    // Add page numbers in the footer
+                    footer: {
+                        height: "10mm", // Height of the footer area
+                        contents: function(page, pages) { // Function to generate footer content
+                             return `<div style="text-align: center; font-size: 8pt; color: #666; width: 100%;">
+                                <span>${title} - 페이지 ${page}/${pages}</span> | <span>생성일: ${date}</span>
+                             </div>`;
+                        }
+                    }
+                 }
+            };
+
+            // Generate the PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                 elementsToHide.forEach(el => el.style.visibility = 'visible');
+                console.log('Advanced PDF successfully generated!');
+            }).catch(err => {
+                 elementsToHide.forEach(el => el.style.visibility = 'visible');
+                 console.error("Advanced PDF generation failed:", err);
             });
         }
-        
-        // Call this function when the document loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize any components that need setup
-            adjustInputHeight();
-        });
+
+        // Add a utility class for visually hidden elements (for accessibility)
+        const style = document.createElement('style');
+        style.textContent = `
+            .visually-hidden {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+        `;
+        document.head.appendChild(style);
+
     </script>
 </body>
 </html>
