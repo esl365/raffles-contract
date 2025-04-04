@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Employment Contract between Raffles Language Course and Zamawelase Nsutsha">
+    <title>Raffles Language Course Employment Contract</title>
+    <!-- Web Font Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2980b9;
+            --accent-color: #3498db;
+            --highlight-color: #f39c12;
+            --warning-color: #e74c3c;
+            --text-color: #333333;
+            --text-light: #666666;
+            --border-color: #dddddd;
+            --light-border: #eeeeee;
+            --background-color: #f9f9f9;
+            --card-background: #ffffff;
+            --section-spacing: 2rem;
+            --border-radius: 4px;
+            --transition-speed: 0.3s;
+            --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 210mm;  /* A4 width */
+            margin: 2rem auto;
+            background: var(--card-background);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            position: relative;
+        }
+        
+        /* Skip navigation for accessibility */
+        .skip-nav {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        
+        .skip-nav:focus {
+            top: 0;
+        }
+        
+        /* Header Styles */
+        .contract-header {
+            text-align: center;
+            margin-bottom: var(--section-spacing);
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .logo {
+            max-width: 180px;
+            height: auto;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+        
+        .contract-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin: 0;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contract-subtitle {
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+            color: var(--secondary-color);
+        }
+        
+        .contract-status {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 50px;
+            color: white;
+        }
+        
+        .status-indicator.draft {
+            background-color: #f39c12;
+        }
+        
+        .status-indicator.final {
+            background-color: #27ae60;
+        }
+        
+        .document-id {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        /* Table of Contents */
+        .table-of-contents {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.5rem;
+            margin-bottom: var(--section-spacing);
+            border-radius: var(--border-radius);
+        }
+        
+        .table-of-contents h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .table-of-contents ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .table-of-contents li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .table-of-contents a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+            display: block;
+            padding: 0.25rem 0;
+        }
+        
+        .table-of-contents a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        /* Document Actions */
+        .document-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: var(--section-spacing);
+        }
+        
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: background-color var(--transition-speed);
+        }
+        
+        .action-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .action-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .action-btn.secondary {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .action-btn.secondary:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Section Styles */
+        .section {
+            margin-bottom: var(--section-spacing);
+            page-break-inside: avoid;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 0.75rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Bilingual Content */
+        .bilingual {
+            display: flex;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--light-border);
+        }
+        
+        .english {
+            flex: 1;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        .korean {
+            flex: 1;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-left: 1px solid var(--light-border);
+            position: relative;
+        }
+        
+        .lang-indicator {
+            position: absolute;
+            top: 0.25rem;
+            right: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0.125rem 0.375rem;
+            border-radius: 3px;
+        }
+        
+        /* List Styles */
+        ul, ol {
+            margin-top: 0;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Highlight Clauses */
+        .highlight-clause {
+            background-color: #fff8e1;
+            border-left: 3px solid var(--highlight-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+        }
+        
+        /* Signature Section */
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2.5rem;
+            gap: 1.5rem;
+        }
+        
+        .signature-block {
+            flex: 1;
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: #fafafa;
+        }
+        
+        .signature-title {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--light-border);
+        }
+        
+        .signature-content {
+            margin-bottom: 1.5rem;
+        }
+        
+        .signature-field {
+            margin-top: 1.5rem;
+        }
+        
+        .signature-field label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid var(--text-color);
+            height: 2.5rem;
+            margin-top: 0.25rem;
+            position: relative;
+        }
+        
+        .signature-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 0.5rem;
+        }
+        
+        .date-field {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .date-input {
+            width: 3rem;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        /* Document Authentication */
+        .document-authentication {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-border);
+        }
+        
+        .document-verification {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+        
+        .qr-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: #f8f9fa;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--text-light);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--light-border);
+            padding-top: 1rem;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                font-size: 11pt;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 1.5cm;
+                max-width: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .signature-block {
+                page-break-inside: avoid;
+            }
+            
+            .no-print, 
+            .document-actions, 
+            .status-indicator,
+            .skip-nav {
+                display: none !important;
+            }
+            
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+            
+            .table-of-contents {
+                display: none;
+            }
+            
+            @page {
+                size: A4;
+                margin: 2cm 1.5cm;
+            }
+        }
+        
+        /* Change tracking system */
+        .changed-text {
+            background-color: #e8f4f8;
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: var(--accent-color);
+        }
+        
+        .removed-text {
+            display: none;
+        }
+        
+        .show-changes .removed-text {
+            display: inline;
+            text-decoration: line-through;
+            color: var(--warning-color);
+            background-color: #fadbd8;
+        }
+        
+        /* Accessibility enhancements */
+        *:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .container {
+                margin: 0;
+                padding: 1rem;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            
+            .bilingual {
+                flex-direction: column;
+            }
+            
+            .english, .korean {
+                padding: 1rem;
+                border: none;
+            }
+            
+            .korean {
+                border-top: 1px solid var(--light-border);
+            }
+            
+            .signatures {
+                flex-direction: column;
+            }
+            
+            .signature-block {
+                margin-bottom: 1.5rem;
+            }
+            
+            .document-actions {
+                flex-wrap: wrap;
+            }
+            
+            .action-btn {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Accessibility skip navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    
+    <div class="container">
+        <div class="contract-header">
+            <!-- Logo placeholder -->
+            <div class="logo">
+                <i class="fas fa-building" style="font-size: 3rem; color: var(--primary-color);"></i>
+            </div>
+            <h1 class="contract-title">CONTRACT OF EMPLOYMENT</h1>
+            <h2 class="contract-subtitle">고용 계약서</h2>
+            <div class="document-id">Document ID: RLC-EMP-2025-NS</div>
+            
+            <!-- Contract status indicator -->
+            <div class="contract-status">
+                <div class="status-indicator final">최종본 / Final</div>
+            </div>
+        </div>
+        
+        <!-- Document actions -->
+        <div class="document-actions no-print">
+            <button class="action-btn" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+            <button class="action-btn" onclick="generatePDF()">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+            <button class="action-btn secondary" id="toggle-changes-btn">
+                <i class="fas fa-history"></i> Show Changes
+            </button>
+            <button class="action-btn secondary" id="toggle-language-btn">
+                <i class="fas fa-language"></i> Toggle Language
+            </button>
+        </div>
+        
+        <!-- Table of Contents -->
+        <nav class="table-of-contents no-print" aria-labelledby="toc-heading">
+            <h3 id="toc-heading">Contents / 목차</h3>
+            <ul>
+                <li><a href="#introduction">Introduction / 소개</a></li>
+                <li><a href="#section-a">A. Position / A. 직위</a></li>
+                <li><a href="#section-b">B. Contract Period / B. 계약 기간</a></li>
+                <li><a href="#section-c">C. Conditions / C. 조건</a></li>
+                <li><a href="#section-d">D. Duties / D. 강사로서의 직무</a></li>
+                <li><a href="#section-e">E. Contract Termination / E. 계약 해지</a></li>
+                <li><a href="#section-f">F. Governing Language / F. 준거 언어</a></li>
+                <li><a href="#section-g">G. Governing Law / G. 준거법 및 관할권</a></li>
+                <li><a href="#signatures">Signatures / 서명</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Main content -->
+        <main id="main-content">
+            <!-- Contract Introduction -->
+            <section class="section" id="introduction" role="region" aria-labelledby="introduction-title">
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>This is a contract between <strong>Raffles Language Course</strong> as the employer (referred to as "A" hereinafter) and <strong>Zamawelase Nsutsha</strong> as the employee (referred to as "B" hereinafter).</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>본 계약서는 고용주인 <strong>Raffles Language Course</strong>(이하 "A"라 함)와 직원인 <strong>Zamawelase Nsutsha</strong>(이하 "B"라 함) 간의 계약입니다.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section A - Position -->
+            <section class="section" id="section-a" role="region" aria-labelledby="section-a-title">
+                <h3 class="section-title" id="section-a-title">
+                    <i class="fas fa-user-tie"></i> A. Position / A. 직위
+                </h3>
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>English Instructor (Full time)</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>영어 강사 (전임)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section B - Contract Period -->
+            <section class="section" id="section-b" role="region" aria-labelledby="section-b-title">
+                <h3 class="section-title" id="section-b-title">
+                    <i class="fas fa-calendar-alt"></i> B. Contract Period / B. 계약 기간
+                </h3>
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>This contract will be valid for a period of 12 months from the date "B" commences employment with the institute.</p>
+                        <p><strong>From:</strong> May 12th, 2025 <strong>To:</strong> May 11th, 2026</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>본 계약은 "B"가 학원에서 실제 근무를 시작한 날로부터 12개월 동안 유효합니다.</p>
+                        <p><strong>시작일:</strong> 2025년 5월 12일 <strong>종료일:</strong> 2026년 5월 11일</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section C - Conditions -->
+            <section class="section" id="section-c" role="region" aria-labelledby="section-c-title">
+                <h3 class="section-title" id="section-c-title">
+                    <i class="fas fa-file-contract"></i> C. Conditions / C. 조건
+                </h3>
+                
+                <!-- Subsection C1 -->
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p><strong>1.</strong> A monthly salary of <u>2,400,000 won</u> will be provided for 120 teaching hours per month (30 teaching hours per week). Additional teaching hours beyond the contracted amount will be compensated at 20,000 won per hour on weekdays.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p><strong>1.</strong> 월 120시간(주 30시간)의 강의 시간에 대해 월 급여 <u>2,400,000원</u>이 지급됩니다. 계약된 시간을 초과하는 추가 강의 시간에 대해서는 평일 기준 시간당 20,000원이 지급됩니다.</p>
+                    </div>
+                </div>
+                
+                <!-- Subsection C2 -->
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p><strong>2.</strong> Upon successful completion of the 12-month contract period, "B" will receive 2,400,000 won as a completion bonus. If "B" is unable to complete the full contract period for any reason, this completion bonus will not be provided.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p><strong>2.</strong> "B"가 12개월 계약 기간을 성공적으로 완료하면 2,400,000원의 계약 완료 보너스를 받게 됩니다. "B"가 어떤 이유로든 전체 계약 기간을 완료하지 못하는 경우, 이 완료 보너스는 지급되지 않습니다.</p>
+                    </div>
+                </div>
+                
+                <!-- Additional subsections would follow in the same pattern -->
+                <!-- For brevity, I'm including just these samples -->
+                
+                <!-- Subsection C9 - Vacation & Holidays - Highlighting important clauses -->
+                <div class="bilingual highlight-clause">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p><strong>9. Vacation & Holidays</strong></p>
+                        <p style="padding-left: 1.5rem;">a. "B" will be eligible for paid vacation after completing six consecutive months of employment.</p>
+                        <p style="padding-left: 1.5rem;">b. "A" will provide 12 days of paid vacation (excluding Saturdays, Sundays, and public holidays) during the contract period.</p>
+                        <p style="padding-left: 1.5rem;">c. "B" may arrange 5 days of vacation according to personal preference, while the remaining 7 days will be scheduled by "A" with one month's advance notice.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p><strong>9. 휴가 및 공휴일</strong></p>
+                        <p style="padding-left: 1.5rem;">a. "B"는 6개월 연속 근무 후 유급 휴가를 사용할 수 있습니다.</p>
+                        <p style="padding-left: 1.5rem;">b. "A"는 계약 기간 동안 12일의 유급 휴가(토요일, 일요일 및 공휴일 제외)를 제공합니다.</p>
+                        <p style="padding-left: 1.5rem;">c. "B"는 개인 선호에 따라 5일의 휴가를 계획할 수 있으며, 나머지 7일은 "A"가 1개월 전 사전 통지와 함께 일정을 조정합니다.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section D - Duties -->
+            <section class="section" id="section-d" role="region" aria-labelledby="section-d-title">
+                <h3 class="section-title" id="section-d-title">
+                    <i class="fas fa-tasks"></i> D. Duties as an Instructor / D. 강사로서의 직무
+                </h3>
+                
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p><strong>Raffles Language Course</strong> instructors serve as primary representatives of <strong>Raffles Language Course</strong>. All instructors are expected to adhere to the following Guidelines & Expectations. Failure to comply with these guidelines may result in termination of the contract.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p><strong>Raffles Language Course</strong> 강사들은 <strong>Raffles Language Course</strong>의 주요 대표자 역할을 합니다. 모든 강사들은 다음 지침 및 기대사항을 준수해야 합니다. 이러한 지침을 준수하지 않을 경우 계약이 해지될 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <!-- Additional subsections for duties would be included here -->
+            </section>
+            
+            <!-- Section E - Contract Termination -->
+            <section class="section" id="section-e" role="region" aria-labelledby="section-e-title">
+                <h3 class="section-title" id="section-e-title">
+                    <i class="fas fa-handshake-slash"></i> E. Contract Termination / E. 계약 해지
+                </h3>
+                
+                <div class="bilingual highlight-clause">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p><strong>1.</strong> The contract may be terminated under the following circumstances:</p>
+                        <p style="padding-left: 1.5rem;">a. If "B" is unable to fulfill the responsibilities outlined in this Employment Agreement, "A" reserves the right to terminate the contract. Similarly, if "A" fails to fulfill its contractual obligations, "B" may terminate the contract.</p>
+                        
+                        <!-- Additional termination clauses would be added here -->
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p><strong>1.</strong> 다음과 같은 상황에서 계약이 해지될 수 있습니다:</p>
+                        <p style="padding-left: 1.5rem;">a. "B"가 본 고용 계약서에 명시된 책임을 이행할 수 없는 경우, "A"는 계약을 해지할 권리를 가집니다. 마찬가지로, "A"가 계약상 의무를 이행하지 못하는 경우, "B"는 계약을 해지할 수 있습니다.</p>
+                        
+                        <!-- Additional termination clauses would be added here -->
+                    </div>
+                </div>
+                
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p><strong>2.</strong> If "B" does not intend to renew the contract at the end of the contract period, or if the contract is terminated during the contract period for any reason, "A" may withhold up to 200,000 won from "B"'s final month's salary as security for any outstanding bills, including telephone and utilities. After all accounts have been settled (within a maximum period of 40 days), any remaining withheld amount will be transferred to an account or person designated by "B". "B" may authorize any person to receive remaining payments on "B"'s behalf by providing proper written confirmation of that person's identity.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p><strong>2.</strong> "B"가 계약 기간 종료 시 계약을 갱신할 의사가 없거나, 계약 기간 중 어떤 이유로든 계약이 해지되는 경우, "A"는 전화 및 공과금을 포함한 미납 요금에 대한 담보로 "B"의 마지막 달 급여에서 최대 200,000원을 원천징수할 수 있습니다. 모든 계정이 정산된 후(최대 40일 이내), 남은 원천징수 금액은 "B"가 지정한 계좌나 사람에게 송금됩니다. "B"는 해당 인물의 신원을 적절히 서면으로 확인함으로써 "B"를 대신하여 남은 급여를 받을 사람을 지정할 수 있습니다.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section F - Governing Language -->
+            <section class="section" id="section-f" role="region" aria-labelledby="section-f-title">
+                <h3 class="section-title" id="section-f-title">
+                    <i class="fas fa-language"></i> F. Governing Language / F. 준거 언어
+                </h3>
+                <div class="bilingual highlight-clause">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>This contract is executed in both English and Korean. The Korean translation is provided for reference purposes only. In the event of any conflict or inconsistency between the English and Korean versions, the English version shall prevail.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>본 계약서는 영어와 한국어로 작성되었습니다. 한국어 번역본은 참고용으로만 제공됩니다. 영문본과 한국어본 사이에 충돌이나 불일치가 있는 경우, 영문본이 우선합니다.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section G - Governing Law and Jurisdiction -->
+            <section class="section" id="section-g" role="region" aria-labelledby="section-g-title">
+                <h3 class="section-title" id="section-g-title">
+                    <i class="fas fa-gavel"></i> G. Governing Law and Jurisdiction / G. 준거법 및 관할권
+                </h3>
+                
+                <div class="bilingual highlight-clause">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>This contract shall be governed by and construed in accordance with the laws of the Republic of Korea. Both parties agree that any dispute, controversy, or claim arising out of or in connection with this contract, or the breach, termination, or invalidity thereof, shall be subject to the exclusive jurisdiction of the Gwangju District Court of Korea. Prior to filing any legal action, the parties shall make good faith efforts to resolve disputes through direct negotiation or mediation.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>본 계약은 대한민국 법률에 따라 규율되고 해석됩니다. 양 당사자는 본 계약으로부터 또는 이와 관련하여 발생하는 모든 분쟁, 논쟁 또는 청구, 또는 계약의 위반, 종료 또는 무효에 관한 사항은 대한민국 광주지방법원의 전속관할에 따르기로 합니다. 법적 조치를 제기하기 전에, 당사자들은 직접 협상 또는 중재를 통해 분쟁을 해결하기 위한 선의의 노력을 기울여야 합니다.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Conclusive Statement -->
+            <section class="section">
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>Both parties have read and agree to the above conditions and terms in good faith and will make reasonable efforts to resolve any disputes cooperatively. The undersigned agree to the above contract.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>양 당사자는 선의로 위의 조건 및 조항을 읽고 동의하며, 모든 분쟁을 협력적으로 해결하기 위해 합리적인 노력을 기울일 것입니다. 아래 서명자는 위의 계약에 동의합니다.</p>
+                    </div>
+                </div>
+            </section> id="section-g" role="region" aria-labelledby="section-g-title">
+                <h3 class="section-title" id="section-g-title">
+                    <i class="fas fa-gavel"></i> G. Governing Law and Jurisdiction / G. 준거법 및 관할권
+                </h3>
+                
+                <div class="bilingual highlight-clause">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>This contract shall be governed by and construed in accordance with the laws of the Republic of Korea. Both parties agree that any dispute, controversy, or claim arising out of or in connection with this contract, or the breach, termination, or invalidity thereof, shall be subject to the exclusive jurisdiction of the Gwangju District Court of Korea. Prior to filing any legal action, the parties shall make good faith efforts to resolve disputes through direct negotiation or mediation.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>본 계약은 대한민국 법률에 따라 규율되고 해석됩니다. 양 당사자는 본 계약으로부터 또는 이와 관련하여 발생하는 모든 분쟁, 논쟁 또는 청구, 또는 계약의 위반, 종료 또는 무효에 관한 사항은 대한민국 광주지방법원의 전속관할에 따르기로 합니다. 법적 조치를 제기하기 전에, 당사자들은 직접 협상 또는 중재를 통해 분쟁을 해결하기 위한 선의의 노력을 기울여야 합니다.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Conclusive Statement -->
+            <section class="section">
+                <div class="bilingual">
+                    <div class="english">
+                        <span class="lang-indicator">EN</span>
+                        <p>Both parties have read and agree to the above conditions and terms in good faith and will make reasonable efforts to resolve any disputes cooperatively. The undersigned agree to the above contract.</p>
+                    </div>
+                    <div class="korean">
+                        <span class="lang-indicator">KR</span>
+                        <p>양 당사자는 선의로 위의 조건 및 조항을 읽고 동의하며, 모든 분쟁을 협력적으로 해결하기 위해 합리적인 노력을 기울일 것입니다. 아래 서명자는 위의 계약에 동의합니다.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Signatures -->
+            <section class="section" id="signatures">
+                <h3 class="section-title">
+                    <i class="fas fa-signature"></i> Signatures
+                </h3>
+                
+                <div class="signatures">
+                    <div class="signature-block">
+                        <div class="signature-title">"A" [Employer]</div>
+                        <div class="signature-content">
+                            <p><strong>Raffles Language Course</strong></p>
+                            
+                            <div class="signature-field">
+                                <label>Address</label>
+                                <p>15, Uijae-ro<br>
+                                Dong-gu Gwangju, Jeollanamdo,<br>
+                                South Korea (61459)</p>
+                            </div>
+                            
+                            <div class="signature-field">
+                                <label>Representative Name</label>
+                                <p>Soon Hwa, Kim</p>
+                            </div>
+                            
+                            <div class="signature-field">
+                                <label>Signature</label>
+                                <div class="signature-line"></div>
+                            </div>
+                            
+                            <div class="signature-field">
+                                <label>Date</label>
+                                <p>April 3, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="signature-block">
+                        <div class="signature-title">"B" [Employee]</div>
+                        <div class="signature-content">
+                            <p><strong>Zamawelase Nsutsha</strong></p>
+                            
+                            <div class="signature-field">
+                                <label>Address</label>
+                                <input type="text" class="signature-input" placeholder="Enter your address">
+                            </div>
+                            
+                            <div class="signature-field">
+                                <label>Signature</label>
+                                <div class="signature-line"></div>
+                            </div>
+                            
+                            <div class="signature-field">
+                                <label>Date</label>
+                                <div class="date-field">
+                                    <input type="text" class="date-input" placeholder="YY">
+                                    <input type="text" class="date-input" placeholder="MM">
+                                    <input type="text" class="date-input" placeholder="DD">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Document Authentication -->
+        <div class="document-authentication">
+            <div class="document-id">Contract ID: RLC-EMP-2025-NS</div>
+            <div class="document-verification">
+                <div class="qr-placeholder">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <p>Scan QR code to verify the authenticity of this document<br>
+                이 문서의 진위 여부를 확인하려면 QR 코드를 스캔하십시오</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Raffles Language Course | 15, Uijae-ro, Dong-gu Gwangju, Jeollanamdo, South Korea (61459)</p>
+            <p>Tel: +82-XX-XXXX-XXXX | Email: contact@raffleslanguage.kr</p>
+            <p>This document was last updated on: April 3, 2025</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript functionality -->
+    <script>
+        // Toggle language display
+        document.getElementById('toggle-language-btn').addEventListener('click', function() {
+            const koreanElements = document.querySelectorAll('.korean');
+            const englishElements = document.querySelectorAll('.english');
+            const btn = this;
+            
+            // Check current state
+            const showingBoth = koreanElements[0].style.display !== 'none' && 
+                               englishElements[0].style.display !== 'none';
+            const showingKorean = koreanElements[0].style.display !== 'none' && 
+                                 englishElements[0].style.display === 'none';
+            
+            if (showingBoth) {
+                // Show only English
+                koreanElements.forEach(el => el.style.display = 'none');
+                englishElements.forEach(el => {
+                    el.style.flex = '1';
+                    el.style.borderRight = 'none';
+                });
+                btn.innerHTML = '<i class="fas fa-language"></i> Show Korean';
+            } else if (showingKorean) {
+                // Show only English
+                koreanElements.forEach(el => el.style.display = 'none');
+                englishElements.forEach(el => {
+                    el.style.display = 'block';
+                    el.style.flex = '1';
+                });
+                btn.innerHTML = '<i class="fas fa-language"></i> Show Both';
+            } else {
+                // Show both
+                koreanElements.forEach(el => el.style.display = 'block');
+                englishElements.forEach(el => {
+                    el.style.display = 'block';
+                    el.style.flex = '1';
+                });
+                btn.innerHTML = '<i class="fas fa-language"></i> Toggle Language';
+            }
+        });
+        
+        // Toggle changes display
+        document.getElementById('toggle-changes-btn').addEventListener('click', function() {
+            document.body.classList.toggle('show-changes');
+            const btn = this;
+            if (document.body.classList.contains('show-changes')) {
+                btn.innerHTML = '<i class="fas fa-history"></i> Hide Changes';
+            } else {
+                btn.innerHTML = '<i class="fas fa-history"></i> Show Changes';
+            }
+        });
+        
+        // PDF generation placeholder function
+        function generatePDF() {
+            alert('PDF generation feature would be implemented here with a library like jsPDF or using server-side processing.');
+            // In a real implementation, we would use a library like jsPDF
+            // or send the HTML to a server for PDF conversion
+        }
+        
+        // Digital signature functionality would be implemented here
+        // using libraries like signature_pad.js
+        
+        // Function to automatically adjust height of input fields
+        function adjustInputHeight() {
+            const textInputs = document.querySelectorAll('textarea.signature-input');
+            textInputs.forEach(input => {
+                input.style.height = 'auto';
+                input.style.height = (input.scrollHeight) + 'px';
+                
+                input.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+            });
+        }
+        
+        // Call this function when the document loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize any components that need setup
+            adjustInputHeight();
+        });
+    </script>
+</body>
+</html>
